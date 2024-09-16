@@ -6,8 +6,10 @@ import RegisterRoute from "./components/RegisterRoute";
 import LoginRoute from "./components/LoginRoute";
 import Home from "./components/Home";
 import EmployeList from "./components/EmployeList";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import "./App.css"
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 class App extends Component{
     state={isSignIn: false}
@@ -25,13 +27,12 @@ class App extends Component{
                 <>
                     <BrowserRouter>
                     <Switch>
-                     
-                    <Route exact path="/register" component={RegisterRoute} /> 
-                    <Route exact path="/login" component={LoginRoute}/>
-                    <Route exact path="/" component={Home}/>
-                    <Route exact path="/employees-list" component={EmployeList}/>
-                    
 
+                    <Route path="/login" component={LoginRoute}/>
+                    <Route exact path="/register" component={RegisterRoute} /> 
+                    <ProtectedRoute exact path="/" component={Home}/>
+                    <ProtectedRoute exact path="/employees-list" component={EmployeList}/>
+                    <Redirect to="/login"/>
                     </Switch>
 
                     </BrowserRouter>
