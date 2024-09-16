@@ -105,7 +105,7 @@ class Home extends Component {
             image_url:image,
         }
         const jwtToken=Cookies.get("jwt_token")
-        const url=`${process.env.REACT_APP_URL}/employe-details/employe`
+        const url=`https://dealsdaryassignment.onrender.com/employe-details/employe`
         const options={
             method:"POST",
             headers:{

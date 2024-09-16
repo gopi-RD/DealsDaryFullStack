@@ -22,7 +22,7 @@ class EmployeList extends Component {
     getEmployeDetails=async ()=>{
 
         const jwtToken = Cookies.get("jwt_token")
-        const url=`${process.env.REACT_APP_URL}/employe-details/employes`
+        const url=`https://dealsdaryassignment.onrender.com/employe-details/employes`
         const options={
             method:"GET",
             headers:{
@@ -140,7 +140,7 @@ class EmployeList extends Component {
             image_url:image,
         }
         const jwtToken=Cookies.get("jwt_token")
-        const url=`${process.env.REACT_APP_URL}/employe-details/employe/${activeUpdateId}`
+        const url=`https://dealsdaryassignment.onrender.com/employe-details/employe/${activeUpdateId}`
         const options={
             method:"PUT",
             headers:{
@@ -277,7 +277,7 @@ class EmployeList extends Component {
 
     onDeleteEmploye=async(id)=>{
         const jwtToken = Cookies.get("jwt_token")
-        const url=`${process.env.REACT_APP_URL}/employe-details/employe/${id}`
+        const url=`https://dealsdaryassignment.onrender.com/employe-details/employe/${id}`
         const options={
             method:"DELETE",
             headers:{
@@ -294,7 +294,7 @@ class EmployeList extends Component {
     onUpdateEmployeDetails=async(id)=>{
 
         const jwtToken=Cookies.get("jwt_token")
-        const url=`${process.env.REACT_APP_URL}/employe-details/employe/${id}`
+        const url=`https://dealsdaryassignment.onrender.com/employe-details/employe/${id}`
         const options={
             method:"GET",
             headers:{

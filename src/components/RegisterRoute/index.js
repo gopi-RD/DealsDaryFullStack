@@ -56,7 +56,7 @@ class RegisterRoute extends Component {
             password
         }
         // send the Register API request
-        const url=`${process.env.REACT_APP_URL}/user/register`
+        const url=`https://dealsdaryassignment.onrender.com/user/register`
         const options={
             method:"POST",
             headers:{

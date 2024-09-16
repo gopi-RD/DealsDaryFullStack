@@ -60,7 +60,7 @@ class LoginRoute extends Component {
             password
         }
         // send the Register API request
-        const url=`${process.env.REACT_APP_URL}/user/login`
+        const url=`https://dealsdaryassignment.onrender.com/user/login`
         console.log(url)
         const options={
             method:"POST",
