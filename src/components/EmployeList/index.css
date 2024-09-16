@@ -1,0 +1,57 @@
+
+
+.employe-list-items{
+    list-style-type: none;
+    padding-left: 0px; 
+}
+
+
+.employe-item{
+    background-color:lightblue;
+    display:flex;
+    align-items: center;
+    list-style-type:none;
+    overflow: auto;
+}
+.unique-id{
+    margin-right:12%;
+    margin-left: 5%;
+}
+.image{
+    margin-right:6%;
+}
+
+.name{
+    margin-right: 6%;
+}
+.email{
+    margin-right:11%;
+
+}
+.mobile{
+    margin-right:2%;
+}
+.designation{
+    margin-right: 1%;
+}
+.gender{
+    margin-right: 2%;
+}
+.course{
+    margin-right: 2%;
+}
+.create-date{
+    margin-right: 6%;
+}
+.action{
+    margin-right: 6%;
+}
+
+.loading-container{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    padding-top: 40px;
+
+
+}

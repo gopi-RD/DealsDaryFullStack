@@ -1,0 +1,35 @@
+*{
+    font-family: "Roboto", "Helvetica Neue",;
+}
+.re-header-top-container{
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color:black;
+    width: 100%;
+}
+.re-header-container{
+    width: 90%;
+    margin: auto;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+.re-website-logo{
+    font-size: 28px;
+    color:#fff;
+}
+
+.re-website-logo:hover{
+    color:  rgb(48, 116, 206);
+}
+
+.sign-in-and-sign-up-button{
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    background-color: #007bff;
+    padding: 8px 16px;
+    border-radius: 4px;
+}

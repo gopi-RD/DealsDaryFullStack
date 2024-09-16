@@ -1,0 +1,76 @@
+*{
+    font-family: "Roboto", "Helvetica Neue",;
+}
+.header-top-container{
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color:black;
+    width: 100%;
+}
+.header-container{
+    width: 90%;
+    margin: auto;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+.website-logo{
+    font-size: 28px;
+    color:#fff;
+}
+
+.website-logo:hover{
+    color:  rgb(48, 116, 206);
+}
+
+.nav-list-items{
+    list-style-type: none;
+    padding-left: 0px;
+    display: flex;
+    align-items: center;
+
+}
+.nav-item{
+    margin-right: 30px;
+    
+    
+}
+
+/*  */
+
+.nav-link:hover{
+    color: rgb(48, 116, 206);
+    text-decoration: underline;
+}
+
+.nav-link{
+    text-decoration: none;
+    color:#fff;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+}
+.logout-button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+     background-color: rgb(48, 116, 206);
+     color: #fff;
+     font-size: 18px;
+     border-radius: 12px;
+     padding: 6px 14px 6px 14px;
+}
+
+.logout-button:hover{
+    background-color:#fff;
+    color: #000;
+}
+
+.user-name{
+    font-size: 18px;
+    color: #fff;
+    margin-right: 30px;
+    font-weight: 400;
+    text-decoration: underline;
+    text-decoration-color: orange;
+}

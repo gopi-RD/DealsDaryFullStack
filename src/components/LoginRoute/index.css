@@ -1,0 +1,91 @@
+
+.lg-home-page-container{
+    background-color: #f8f9fa;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:40px;
+
+}
+
+.lg-register-form-container{
+    width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+   
+    
+
+}
+.lg-website-text{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: rgb(35, 172, 35);
+}
+.lg-separator{
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+.lg-label-text{
+    color: #808080;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+.lg-input-element{
+    border: 1px solid rgba(43, 14, 14, 0.5);
+    border-radius: 6px;
+    height: 38px;
+    font-size: 18px;
+    color: black;
+    padding-left: 10px;
+    
+
+}
+.lg-submit-button{
+    background-color: rgb(48, 116, 206);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.lg-submit-button:hover{
+    background-color: rgb(42, 96, 186);
+}
+
+.rg-checkbox{
+    height:20px;
+    width: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: 1px solid rgba(43, 14, 14, 0.5);
+    border-radius: 5px;
+    color:rgb(42, 96, 186);
+}
+.lg-shown-password{
+    display: flex;
+    align-items: center;
+
+    
+}
+
+.error-text{
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.error-input-border{
+    border: 1px solid red;
+}
+

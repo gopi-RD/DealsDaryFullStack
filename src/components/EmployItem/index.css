@@ -1,0 +1,97 @@
+.item{
+    width: 100%;
+    padding-left: 20px;
+    background-color: blueviolet;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    min-height: 60px;
+    margin-top: 20px;
+    display:flex;
+    align-items: center;
+    overflow: auto;
+
+
+}
+
+
+    
+.id{
+    margin-right: 4%;
+    width: 230px;
+}
+
+
+
+.image-item{
+    width: 40px;
+    margin-right: 3%;
+    text-align: center;
+}
+.name-item{
+    font-weight: bold;
+    margin-right: 3%;
+    width: 150px;
+    text-align: center;
+}
+.email-item{
+    width: 150px;
+    margin-right: 5%;
+}
+.mobile-item{
+    width: 120px;
+    margin-right: 1%;
+}
+.designation-item{
+    width: 40px;
+    margin-right: 3%;
+}
+.gender-item{
+    width: 70px;
+    margin-right: 1%;
+}
+.course-item{
+    width: 60px;
+    margin-right: 1%;
+}
+
+.createAt-item{
+    width: 150px;
+    margin-right:2%;
+}
+
+
+
+.edit-delete-container{
+    display: flex;
+    justify-content: space-between;
+}
+.edit{
+    color:#fff;
+    margin-right: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+}
+.edit:hover{
+    color:darkgreen;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+.delete{
+    color:white;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+}
+.delete:hover{
+    color:red;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
