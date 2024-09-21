@@ -155,11 +155,13 @@ class EmployeList extends Component {
         const data= await response.json();
         console.log(data);
 
+
         if (response.ok){
             this.onSuccessResponse(data)
         }else{
             this.onFailureResponse(data)
         }
+        this.getEmployeDetails()
         this.setState(prevState=>({
            name:"",email:"",mobile:"",image:"",isPopup:false
         }))
