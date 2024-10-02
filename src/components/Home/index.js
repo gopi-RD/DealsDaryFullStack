@@ -7,8 +7,8 @@ import Header from "../Header"
 import "./index.css"
 
 class Home extends Component { 
-    state={ isPopup:false,name:"",email:"",mobile:"",designation:"HR",gender:"Male",isMca:true,isBca:false,isBsc:false,image:"",
-        isNameEr:false,isEmailEr:false,isMobileEr:false,course:"MCA",isImageEr:false,isError:false,isErrorText:"",isSuccess:false,isSuccessText:""}
+    state={ isPopup:false,name:"",email:"",mobile:"",designation:"HR",gender:"Male",isMcaC:false,isBcaC:false,isBscC:false,image:"",
+        isNameEr:false,isEmailEr:false,isMobileEr:false,isImageEr:false,isError:false,isErrorText:"",isSuccess:false,isSuccessText:""}
 
 
     onCancelAddEmploye=()=>{
@@ -40,13 +40,19 @@ class Home extends Component {
     }
 
     onChangeMCACourse=()=>{
-        this.setState({isMca:true,isBca:false,isBsc:false,course:"MCA"})
+       this.setState(prevState=>({isMcaC:!prevState.isMcaC}))
     }
     onChangeBCACourse=(event)=>{
-        this.setState({isMca:false,isBca:true,isBsc:false,course:"BCA"})
+        this.setState(prevState=>({
+            isBcaC:!prevState.isBcaC
+        }))
+       
     }
     onChangeBSCCourse=(event)=>{
-        this.setState({isMca:false,isBca:false,isBsc:true,course:"BSC"})
+        this.setState(prevState=>({
+            isBscC:!prevState.isBscC
+        }))
+        
     }
 
     onUploadimage=(event)=>{
@@ -72,7 +78,7 @@ class Home extends Component {
 
     onAddEmployeDetails=async(event)=>{
         event.preventDefault()
-        const {name,email,mobile,designation,gender,course,image} = this.state 
+        const {name,email,mobile,designation,gender,image,isBcaC,isBscC,isMcaC} = this.state 
 
         if (name===""){
             this.setState({isNameEr:true})
@@ -95,13 +101,19 @@ class Home extends Component {
             this.setState({isNameEr:false,isEmailEr:false,isMobileEr:false,isImageEr:false})
         }
 
+        let isMca= isMcaC===true? "MCA":"";
+        let isBca= isBcaC===true? "BCA":"";
+        let isBsc= isBscC===true? "BSC":"";
         const employeData={
             name,
             email,
             mobile,
             designation,
             gender,
-            course,
+            course:`${isMca} ${isBca} ${isBsc}`,
+            mca_status:isMcaC,
+            bca_status:isBcaC,
+            bsc_status:isBscC,
             image_url:image,
         }
         const jwtToken=Cookies.get("jwt_token")
@@ -125,9 +137,6 @@ class Home extends Component {
         }else{
             this.onFailureResponse(data)
         }
-
-        
-        
         this.setState(prevState=>({
            name:"",email:"",mobile:"",image:""
         }))
@@ -135,10 +144,11 @@ class Home extends Component {
 
 
     onAddEmploye=()=>{
-        const {name,email,mobile,designation,isBca,isBsc,isMca,isEmailEr,isMobileEr,isNameEr,isImageEr,isError,isErrorText,isSuccess,isSuccessText} = this.state
+        const {name,email,mobile,designation,isBcaC,isBscC,isMcaC,isEmailEr,isMobileEr,isNameEr,isImageEr,isError,isErrorText,isSuccess,isSuccessText} = this.state
         const nameInputBorder= isNameEr ? "error-input-border":null 
         const emailInputBorder= isEmailEr? "error-input-border":null
         const mobileInputBorder= isMobileEr? "error-input-border":null 
+        //console.log(isMcaCo,isBcaCo,isBscCo)
 
         return (
             <div className="popup-container">
@@ -194,15 +204,15 @@ class Home extends Component {
                            COURSE
                        </label>
                        <div>
-                           <input type="checkbox" id="MCAcourse"  checked={isMca}  onChange={this.onChangeMCACourse} />
+                           <input type="checkbox" id="MCAcourse"  checked={isMcaC}  onChange={this.onChangeMCACourse} />
                            <label htmlFor="MCAcourse">MCA</label>
                        </div>
                        <div>
-                           <input type="checkbox" id="BCAcourse" checked={isBca}   onChange={this.onChangeBCACourse}  />
+                           <input type="checkbox" id="BCAcourse" checked={isBcaC}   onChange={this.onChangeBCACourse}  />
                            <label htmlFor="BCAcourse">BCA</label>
                        </div>
                        <div>
-                           <input type="checkbox" id="BSCcourse" checked={isBsc}  onChange={this.onChangeBSCCourse} />
+                           <input type="checkbox" id="BSCcourse" checked={isBscC}  onChange={this.onChangeBSCCourse} />
                            <label htmlFor="BSCcourse">BSC</label>
                        </div>
                    </div>

@@ -12,8 +12,8 @@ import "./index.css"
 
 
 class EmployeList extends Component {
-    state={employeList:[],isPopup:false,name:"",email:"",mobile:"",designation:"HR",gender:"Male",isMca:true,isBca:false,isBsc:false,image:"",
-        isNameEr:false,isEmailEr:false,isMobileEr:false,course:"MCA",isImageEr:false,isError:false,isErrorText:"",isSuccess:false,isSuccessText:"",activeUpdateId:null,loading:true}
+    state={employeList:[],isPopup:false,name:"",email:"",mobile:"",designation:"HR",gender:"Male",isMcaC:false,isBcaC:false,isBscC:false,image:"",
+        isNameEr:false,isEmailEr:false,isMobileEr:false,isImageEr:false,isError:false,isErrorText:"",isSuccess:false,isSuccessText:"",activeUpdateId:null,loading:true}
     componentDidMount(){
         this.getEmployeDetails()
     }
@@ -41,7 +41,7 @@ class EmployeList extends Component {
                 gender:eachItem.gender,
                 mobile:eachItem.mobile,
                 course:eachItem.course,
-                createdAt:eachItem.createdAt,
+                createdAt:eachItem.created_at,
                 imageUrl:eachItem.image_url,
             }))
             this.setState({employeList:updateData,loading:false})
@@ -77,22 +77,30 @@ class EmployeList extends Component {
     }
 
     onChangeMCACourse=()=>{
-        this.setState({isMca:true,isBca:false,isBsc:false,course:"MCA"})
+        this.setState(prevState=>({
+            isMcaC:!prevState.isMcaC
+        }))
+       
     }
     onChangeBCACourse=(event)=>{
-        this.setState({isMca:false,isBca:true,isBsc:false,course:"BCA"})
+        this.setState(prevState=>({
+            isBcaC:!prevState.isBcaC
+        }))
+       
     }
     onChangeBSCCourse=(event)=>{
-        this.setState({isMca:false,isBca:false,isBsc:true,course:"BSC"})
+        this.setState(prevState=>({
+            isBscC:!prevState.isBscC
+        }))
+       
     }
-
     onUploadimage=(event)=>{
         const file=event.target.files[0]
         if (file.type.startsWith("image/")){
             const reader=new FileReader()
             reader.readAsDataURL(file)
             reader.onloadend=()=>{
-                this.setState({image:reader.result})
+            this.setState({image:reader.result})
             }
         }
     }
@@ -108,7 +116,7 @@ class EmployeList extends Component {
 
     onAddEmployeDetails=async(event)=>{
         event.preventDefault()
-        const {name,email,mobile,designation,gender,course,image,activeUpdateId} = this.state 
+        const {name,email,mobile,designation,gender,image,isBcaC,isBscC,isMcaC,activeUpdateId} = this.state 
         if (name===""){
             this.setState({isNameEr:true})
             return;
@@ -130,13 +138,20 @@ class EmployeList extends Component {
             this.setState({isNameEr:false,isEmailEr:false,isMobileEr:false,isImageEr:false})
         }
 
+        let isMca= isMcaC===true? "MCA":"";
+        let isBca= isBcaC===true? "BCA":"";
+        let isBsc= isBscC===true? "BSC":"";
+
         const employeData={
             name,
             email,
             mobile,
             designation,
             gender,
-            course,
+            course:`${isMca} ${isBca} ${isBsc}`,
+            mca_status:isMcaC,
+            bca_status:isBcaC,
+            bsc_status:isBscC,
             image_url:image,
         }
         const jwtToken=Cookies.get("jwt_token")
@@ -162,28 +177,20 @@ class EmployeList extends Component {
             this.onFailureResponse(data)
         }
         this.getEmployeDetails()
-        this.setState(prevState=>({
+        this.setState({
            name:"",email:"",mobile:"",image:"",isPopup:false
-        }))
+        })
 
        
-
-
-
-
-
-        
-
-
-
     }
 
 
     onAddEmploye=()=>{
-        const {name,email,mobile,designation,isBca,isBsc,isMca,isEmailEr,isMobileEr,isNameEr,isImageEr,isError,isErrorText,isSuccess,isSuccessText} = this.state
+        const {name,email,mobile,designation,isBcaC,isBscC,isMcaC,isEmailEr,isMobileEr,isNameEr,isImageEr,isError,isErrorText,isSuccess,isSuccessText} = this.state
         const nameInputBorder= isNameEr ? "error-input-border":null 
         const emailInputBorder= isEmailEr? "error-input-border":null
         const mobileInputBorder= isMobileEr? "error-input-border":null 
+        console.log(isBcaC,isMcaC,isBscC)
 
         return (
             <div className="popup-container">
@@ -239,17 +246,18 @@ class EmployeList extends Component {
                            COURSE
                        </label>
                        <div>
-                           <input type="checkbox" id="MCAcourse"  checked={isMca}  onChange={this.onChangeMCACourse} />
+                           <input type="checkbox" id="MCAcourse"  checked={isMcaC}  onChange={this.onChangeMCACourse} />
                            <label htmlFor="MCAcourse">MCA</label>
                        </div>
                        <div>
-                           <input type="checkbox" id="BCAcourse" checked={isBca}   onChange={this.onChangeBCACourse}  />
+                           <input type="checkbox" id="BCAcourse" checked={isBcaC}   onChange={this.onChangeBCACourse}  />
                            <label htmlFor="BCAcourse">BCA</label>
                        </div>
                        <div>
-                           <input type="checkbox" id="BSCcourse" checked={isBsc}  onChange={this.onChangeBSCCourse} />
+                           <input type="checkbox" id="BSCcourse" checked={isBscC}  onChange={this.onChangeBSCCourse} />
                            <label htmlFor="BSCcourse">BSC</label>
                        </div>
+                       
                    </div>
 
                    <div className="employe-separator">
@@ -307,7 +315,7 @@ class EmployeList extends Component {
         const data=await response.json()
         console.log(data)
 
-        this.setState({isPopup:true,name:data.name,email:data.email,mobile:data.mobile,course:data.course,gender:data.gender,designation:data.designation,image:data.image_url,activeUpdateId:id})
+        this.setState({isPopup:true,name:data.name,email:data.email,mobile:data.mobile,course:data.course,isMcaC:data.mca_status,isBcaC:data.bca_status,isBscC:data.bsc_status,gender:data.gender,designation:data.designation,image:data.image_url,activeUpdateId:id})
     }
 
 
